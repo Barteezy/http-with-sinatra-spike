@@ -1,0 +1,19 @@
+<h1>Dopest Inner-City Secret Breakdance moves!</h1>
+
+<ul>
+    <% @moves.each do |move| %>
+        <li><a href="/moves/<%=move%>"><%=move%></a></li>
+    <%end%>
+
+</ul>
+
+
+<h2><%=@move%></h2>
+
+<h3><a href="/moves">How many moves do I have?</a></h3>
+
+<p><a href="/"> Back to moves</a></p>
+
+
+
+

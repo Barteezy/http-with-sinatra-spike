@@ -1,17 +1,29 @@
 require "sinatra/base"
-require "sinatra/reloader"
+
 
 class MyApp < Sinatra::Application
-  register Sinatra::Reloader
+#set :views, Proc.new {File.join(root, "views")}
 
   def initialize
     super
-    @items = []
+    @moves = ["Head Spin", "Top Rock", "Nip Tuck"]
   end
 
   get "/" do
-    "items length: #{@items.length}"
+    erb :index, :locals => {:moves => @moves}
   end
 
-  run! if app_file == $0
+
+  get "/moves" do
+    "You are rockin' #{@moves.length.to_s} moves"
+  end
+
+  get "/moves/:move" do
+    @move = params[:move]
+    @new_move = params[:input]
+    if params
+      @move << @new_move
+      erb :moves, :locals => {:moves => @moves}
+    end
+  end
 end

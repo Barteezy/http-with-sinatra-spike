@@ -1,2 +1,2 @@
-require './app'
-run MyApp
+require './lukes_app'
+run LukesApp

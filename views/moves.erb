@@ -1,6 +1,12 @@
 <ul>
 
-  <h2><%=@move%></h2>
+  <h2><%=move%></h2>
+
+  <form action="/<%= move %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="So Last Year">
+  </form>
+
   <p><a href="/"> Back to moves</a></p>
 
 </ul>

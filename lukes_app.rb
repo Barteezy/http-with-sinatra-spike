@@ -1,8 +1,7 @@
 require "sinatra/base"
 
 
-class MyApp < Sinatra::Application
-#set :views, Proc.new {File.join(root, "views")}
+class LukesApp < Sinatra::Application
 
   def initialize
     super
@@ -13,6 +12,16 @@ class MyApp < Sinatra::Application
     erb :index, :locals => {:moves => @moves}
   end
 
+  post "/" do
+    @moves << params[:new_move]
+    redirect "/"
+  end
+
+  delete "/:move" do
+    @moves.delete(params[:move])
+    redirect "/"
+  end
+
 
   get "/moves" do
     "You are rockin' #{@moves.length.to_s} moves"
@@ -20,10 +29,6 @@ class MyApp < Sinatra::Application
 
   get "/moves/:move" do
     @move = params[:move]
-    @new_move = params[:input]
-    if params
-      @move << @new_move
-      erb :moves, :locals => {:moves => @moves}
-    end
+    erb :moves, :locals => {:move => @move}
   end
 end

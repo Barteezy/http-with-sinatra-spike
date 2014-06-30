@@ -1,19 +1,15 @@
 <h1>Dopest Inner-City Secret Breakdance moves!</h1>
 
 <ul>
-    <% @moves.each do |move| %>
+    <% moves.each do |move| %>
         <li><a href="/moves/<%=move%>"><%=move%></a></li>
     <%end%>
 
 </ul>
 
-
-<h2><%=@move%></h2>
+<form action="/" method="post">
+  <input type="text" placeholder="New Move" name="new_move"/>
+  <input type="submit" value="Add">
+</form>
 
 <h3><a href="/moves">How many moves do I have?</a></h3>
-
-<p><a href="/"> Back to moves</a></p>
-
-
-
-
